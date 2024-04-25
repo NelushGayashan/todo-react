@@ -43,6 +43,9 @@ bash
 Screenshots
 ![image](https://github.com/NGFXavier/todo-react/assets/44164300/9d45e7e9-fe64-437f-b674-2ad268dd4994)
 ![image](https://github.com/NGFXavier/todo-react/assets/44164300/2baceb08-4068-4a4b-b03b-fd1164d2abdb)
+![image](https://github.com/NGFXavier/todo-react/assets/44164300/9ca14371-9e00-4cc8-a120-c3f7d5ed6985)
+![image](https://github.com/NGFXavier/todo-react/assets/44164300/7b7d0878-80c5-47f0-aa21-f8bbb74bd676)
+
 
 
 
