@@ -41,8 +41,9 @@ bash
     Open http://localhost:3000 to view the app in your browser.
 
 Screenshots
+![image](https://github.com/NGFXavier/todo-react/assets/44164300/9d45e7e9-fe64-437f-b674-2ad268dd4994)
+![image](https://github.com/NGFXavier/todo-react/assets/44164300/2baceb08-4068-4a4b-b03b-fd1164d2abdb)
 
 
-License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+
