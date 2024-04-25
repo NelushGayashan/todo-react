@@ -42,6 +42,16 @@ class App extends Component {
                 list,
                 userInput: ""
             });
+            toast.success(`Added task: ${userInput.value}`, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+
         } else {
             toast.error("Please enter a task before adding.", {
                 position: "top-right",
@@ -137,7 +147,7 @@ class App extends Component {
                     <Col md={{ span: 5, offset: 4 }}>
                         <InputGroup className="mb-3">
                             <FormControl
-                                placeholder="add item . . . "
+                                placeholder="Add item . . . "
                                 size="lg"
                                 value={this.state.userInput}
                                 onChange={(item) =>
