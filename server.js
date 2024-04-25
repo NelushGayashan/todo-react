@@ -1,15 +1,15 @@
-const express = require('express');
-const mysql = require('mysql');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+import express from 'express';
+import { createPool } from 'mysql';
+import { json } from 'body-parser';
+import cors from 'cors';
 
 const app = express();
 const port = 3000;
 
-app.use(bodyParser.json());
+app.use(json());
 app.use(cors());
 
-const pool = mysql.createPool({
+const pool = createPool({
   connectionLimit: 10,
   host: 'localhost',
   user: 'root',
