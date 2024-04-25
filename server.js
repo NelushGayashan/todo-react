@@ -17,6 +17,15 @@ const pool = mysql.createPool({
   database: 'todo_app'
 });
 
+pool.getConnection((err, connection) => {
+  if (err) {
+    console.error('Error connecting to database: ' + err.stack);
+    return;
+  }
+  console.log('Connected to database as id ' + connection.threadId);
+  connection.release();
+});
+
 app.get('/tasks', (req, res) => {
   pool.query('SELECT * FROM tasks', (error, results) => {
     if (error) {
@@ -42,6 +51,18 @@ app.post('/tasks', (req, res) => {
       return;
     }
     res.json({ message: 'Task inserted successfully' });
+  });
+});
+
+// Gracefully close the database pool when the server shuts down
+process.on('SIGINT', () => {
+  pool.end((err) => {
+    if (err) {
+      console.error('Error closing the database pool: ' + err.stack);
+      process.exit(1);
+    }
+    console.log('Database pool closed');
+    process.exit();
   });
 });
 
