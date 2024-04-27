@@ -1,13 +1,17 @@
 import express from 'express';
 import { createPool } from 'mysql';
-import { json } from 'body-parser';
+import bodyParser from 'body-parser';
 import cors from 'cors';
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
-app.use(json());
-app.use(cors());
+app.use(bodyParser.json());
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true
+}));
+
 
 const pool = createPool({
   connectionLimit: 10,
@@ -51,6 +55,38 @@ app.post('/tasks', (req, res) => {
       return;
     }
     res.json({ message: 'Task inserted successfully' });
+  });
+});
+
+app.put('/tasks/:id', (req, res) => {
+  const { id } = req.params;
+  const { description } = req.body;
+
+  if (!description) {
+    res.status(400).json({ error: 'Task description is required' });
+    return;
+  }
+
+  pool.query('UPDATE tasks SET description = ? WHERE id = ?', [description, id], (error, results) => {
+    if (error) {
+      console.error('Error updating task: ' + error.stack);
+      res.status(500).json({ error: 'Failed to update task' });
+      return;
+    }
+    res.json({ message: 'Task updated successfully' });
+  });
+});
+
+app.delete('/tasks/:id', (req, res) => {
+  const { id } = req.params;
+
+  pool.query('DELETE FROM tasks WHERE id = ?', [id], (error, results) => {
+    if (error) {
+      console.error('Error deleting task: ' + error.stack);
+      res.status(500).json({ error: 'Failed to delete task' });
+      return;
+    }
+    res.json({ message: 'Task deleted successfully' });
   });
 });
 

@@ -30,7 +30,7 @@ class App extends Component {
 
   fetchTasks = () => {
     axios
-      .get("http://localhost:3000/tasks")
+      .get("http://localhost:3001/tasks")
       .then((response) => {
         this.setState({ list: response.data });
       })
@@ -48,14 +48,14 @@ class App extends Component {
   addItem = () => {
     if (this.state.userInput.trim() !== "") {
       axios
-        .post("http://localhost:3000/tasks", {
+        .post("http://localhost:3001/tasks", {
           description: this.state.userInput,
         })
         .then(() => {
           this.fetchTasks();
           toast.success(`Added task: ${this.state.userInput}`, {
             position: "top-right",
-            autoClose: 3000,
+            autoClose: 3001,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -67,7 +67,7 @@ class App extends Component {
           console.error("Error adding task: " + error.message);
           toast.error("Failed to add task", {
             position: "top-right",
-            autoClose: 3000,
+            autoClose: 3001,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -78,7 +78,7 @@ class App extends Component {
     } else {
       toast.error("Please enter a task before adding.", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 3001,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -90,12 +90,12 @@ class App extends Component {
 
   deleteItem = (key) => {
     axios
-      .delete(`http://localhost:3000/tasks/${key}`)
+      .delete(`http://localhost:3001/tasks/${key}`)
       .then(() => {
         this.fetchTasks();
         toast.success(`Deleted task with id: ${key}`, {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 3001,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -107,7 +107,7 @@ class App extends Component {
         console.error("Error deleting task: " + error.message);
         toast.error("Failed to delete task", {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 3001,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -138,14 +138,14 @@ class App extends Component {
     if (userInput.trim() !== "") {
       const taskId = list[editIndex].id;
       axios
-        .put(`http://localhost:3000/tasks/${taskId}`, {
+        .put(`http://localhost:3001/tasks/${taskId}`, {
           description: userInput,
         })
         .then(() => {
           this.fetchTasks();
           toast.success(`Edited task with id: ${taskId} successfully`, {
             position: "top-right",
-            autoClose: 3000,
+            autoClose: 3001,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -157,7 +157,7 @@ class App extends Component {
           console.error("Error editing task: " + error.message);
           toast.error("Failed to edit task", {
             position: "top-right",
-            autoClose: 3000,
+            autoClose: 3001,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
