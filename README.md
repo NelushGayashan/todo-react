@@ -1,6 +1,7 @@
 Todo App
 
 This is a simple todo list app created with MySQL for the database and [insert frontend framework/library here] for the frontend.
+
 Installation
 
     Clone the repository: git clone https://github.com/NGFXavier/todo-app.git
