@@ -27,3 +27,6 @@ This is a simple todo list app created with MySQL for the database and [insert f
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+![image](https://github.com/NGFXavier/todo-react/assets/44164300/9ff55bc5-cce2-4ee5-9f5f-010a447fb55a)
+
